@@ -13,10 +13,10 @@ pipeline {
       }
     }
     stage('Check dependencies') {
-  steps {
-    dependencyCheck additionalArguments: '', odcInstallation: 'Dependency-Check'
-  }
-}
+      steps {
+        dependencyCheck additionalArguments: '', odcInstallation: 'Dependency-Check'
+      }
+    }
 
     stage('Publish to S3') {
       steps {
