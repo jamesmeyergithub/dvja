@@ -12,6 +12,11 @@ pipeline {
         sh "mvn clean package"
       }
     }
+    stage('Scan for vulnerabilities') {
+      steps {
+        sh 'java -jar dvja-*.war & && PID=$! && zap-cli quick-scan --self-contained --spider -r http://127.0.0.1 && zap-cli report -o zap-report.html -f html && kill $PID'
+      }
+    }
     stage('Check dependencies') {
       steps {
         dependencyCheck additionalArguments: '', odcInstallation: 'Dependency-Check'
