@@ -40,6 +40,5 @@ pipeline {
     always {
         archiveArtifacts artifacts: 'zap-report.html', fingerprint: true
     }
-}
-
+  }
 }
